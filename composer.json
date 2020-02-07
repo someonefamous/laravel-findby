@@ -13,5 +13,10 @@
         "php": ">=7",
         "illuminate/support": ">=5"
     },
+    "autoload": {
+        "psr-4": {
+            "SomeoneFamous\\FindBy\\": "src/"
+        }
+    },
     "minimum-stability": "dev"
 }
