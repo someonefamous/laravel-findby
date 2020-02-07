@@ -12,5 +12,6 @@
     "require": {
         "php": ">=7",
         "illuminate/support": ">=5"
-    }
+    },
+    "minimum-stability": "dev"
 }
