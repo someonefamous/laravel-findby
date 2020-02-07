@@ -1,0 +1,16 @@
+{
+    "name": "someonefamous/laravel-findby",
+    "description": "Extended 'find' functionality for Eloquent (Laravel).",
+    "keywords": ["laravel", "eloquent", "database"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Someone Famous",
+            "email": "someonefamous@password99.com"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "illuminate/support": ">=5"
+    }
+}
