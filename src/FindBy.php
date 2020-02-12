@@ -8,14 +8,14 @@ trait FindBy
 {
     public static function __callStatic($method, $arguments)
     {
-        if (substr($method, 0, 6) == 'findBy') {
+        if (Str::startsWith($method, 'findBy')) {
 
-            return static::where(Str::snake(substr($method, 6)), $arguments[0])->first();
+            return static::where(Str::snake(Str::after($method, 'findBy')), $arguments[0])->first();
         }
 
-        if (substr($method, 0, 9) == 'findAllBy') {
+        if (Str::startsWith($method, 'findAllBy')) {
 
-            return static::where(Str::snake(substr($method, 9)), $arguments[0])->get();
+            return static::where(Str::snake(Str::after($method, 'findAllBy')), $arguments[0])->get();
         }
 
         return parent::__callStatic($method, $arguments);
