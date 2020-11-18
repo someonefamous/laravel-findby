@@ -10,9 +10,7 @@ The command can be used for any arbitrary [snake-cased] field name. e.g. `Item::
 To use, simply add `use SomeoneFamous\FindBy\FindBy;` to any Eloquent model.
 
 ```
-<?php
-
-namespace App;
+...
 
 use SomeoneFamous\FindBy\FindBy;
 
