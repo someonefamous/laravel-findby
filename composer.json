@@ -17,6 +17,5 @@
         "psr-4": {
             "SomeoneFamous\\FindBy\\": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
