@@ -1,6 +1,6 @@
 <?php
 
-namespace SomeoneFamous\FindBy;
+namespace SomeoneFamous\FindBy\Traits;
 
 use Illuminate\Support\Str;
 
