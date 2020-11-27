@@ -7,12 +7,12 @@ Also, `$all_the_bobs = User::findAllByFirstName('Bob')` rather than `$all_the_bo
 
 The command can be used for any arbitrary [snake-cased] field name. e.g. `Item::findByArbitraryFieldName('example')` is functionaliy equivalent to `Item::where('arbitrary_field_name', 'example')->first()`.
 
-To use, simply add `use SomeoneFamous\FindBy\FindBy;` to any Eloquent model.
+To use, simply add `use SomeoneFamous\FindBy\Traits\FindBy;` to any Eloquent model.
 
 ```
 ...
 
-use SomeoneFamous\FindBy\FindBy;
+use SomeoneFamous\FindBy\Traits\FindBy;
 
 class Thing extends Model
 {
