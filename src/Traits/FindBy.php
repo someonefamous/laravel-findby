@@ -10,6 +10,9 @@ trait FindBy
     {
         if (Str::startsWith($method, 'findBy')) {
 
+            echo Str::snake(Str::after($method, 'findBy')) . "\n";
+
+
             return static::where(Str::snake(Str::after($method, 'findBy')), $arguments[0])->first();
         }
 

@@ -17,17 +17,17 @@ class TraitTest extends TestCase
             [
                 'some_field' => 'abc',
                 'other_field' => 'def',
-                'field_3_is_a_field_with_a_number_in_it' => 'ghi',
+                'field_3' => 'ghi',
             ],
             [
                 'some_field' => 'abc',
-                'other_field' => 'XXXXXXXXXXX',
-                'field_3_is_a_field_with_a_number_in_it' => 'YYYYYYYYYYYYYY',
+                'other_field' => 'XXX',
+                'field_3' => 'YYY',
             ],
             [
                 'some_field' => '123',
-                'other_field' => '66666666666',
-                'field_3_is_a_field_with_a_number_in_it' => '9999999999999',
+                'other_field' => '666',
+                'field_3' => '999',
             ]
         ]);
 
@@ -45,17 +45,17 @@ class TraitTest extends TestCase
             [
                 'some_field' => 'abc',
                 'other_field' => 'def',
-                'field_3_is_a_field_with_a_number_in_it' => 'ghi',
+                'field_3' => 'ghi',
             ],
             [
                 'some_field' => 'abc',
-                'other_field' => 'XXXXXXXXXXX',
-                'field_3_is_a_field_with_a_number_in_it' => 'YYYYYYYYYYYYYY',
+                'other_field' => 'XXX',
+                'field_3' => 'YYY',
             ],
             [
                 'some_field' => '123',
-                'other_field' => '66666666666',
-                'field_3_is_a_field_with_a_number_in_it' => '9999999999999',
+                'other_field' => '666',
+                'field_3' => '999',
             ]
         ]);
 
@@ -63,6 +63,7 @@ class TraitTest extends TestCase
 
         $things_2 = Thing::findAllBySomeField('abc')->toArray();
 
+        $this->assertCount(2, $things_1);
         $this->assertEquals($things_1, $things_2);
     }
 
@@ -73,17 +74,50 @@ class TraitTest extends TestCase
             [
                 'some_field' => 'abc',
                 'other_field' => 'def',
-                'field_3_is_a_field_with_a_number_in_it' => 'ghi',
+                'field_3' => 'ghi',
             ],
             [
                 'some_field' => 'abc',
                 'other_field' => 'other string',
-                'field_3_is_a_field_with_a_number_in_it' => 'YYYYYYYYYYYYYY',
+                'field_3' => 'YYY',
             ]
         ]);
 
         $thing = Thing::find(2);
 
         $this->assertNotNull($thing);
+    }
+
+    /** @test */
+    function trait_works_with_forced_underscore_for_numbers()
+    {
+        Thing::insert([
+            [
+                'some_field' => 'abc',
+                'other_field' => 'def',
+                'field_3' => 'ghi',
+            ],
+            [
+                'some_field' => 'abc',
+                'other_field' => 'XXX',
+                'field_3' => 'YYY',
+            ],
+            [
+                'some_field' => '123',
+                'other_field' => '666',
+                'field_3' => '999',
+            ]
+        ]);
+
+        $thing_1 = Thing::where('field_3', '999')->first();
+
+        $thing_2 = Thing::findByField3('999');
+        // Illuminate's snake function converts Field3 to field3
+        $this->assertNull($thing_2);
+
+        //Force an underscore:
+        $thing_3 = Thing::findByField_3('999');
+
+        $this->assertTrue($thing_3->is($thing_1));
     }
 }

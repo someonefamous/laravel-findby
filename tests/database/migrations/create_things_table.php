@@ -12,7 +12,7 @@ class CreateThingsTable extends Migration
             $table->id();
             $table->string('some_field');
             $table->string('other_field');
-            $table->string('field_3_is_a_field_with_a_number_in_it');
+            $table->string('field_3');
             $table->timestamps();
         });
     }
