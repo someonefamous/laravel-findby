@@ -12,6 +12,6 @@ class Thing extends Model
     protected $fillable = [
         'some_field',
         'other_field',
-        'field_3_is_a_field_with_a_number_in_it'
+        'field_3'
     ];
 }
